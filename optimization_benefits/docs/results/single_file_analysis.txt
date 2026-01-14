@@ -1,0 +1,319 @@
+======================================================================
+API vs DATABASE COMPARISON - BENCHMARK RESULTS
+======================================================================
+This script compares RAG performance between:
+  - Shopify API (api_main.py)
+  - SQLite Database (db_main.py)
+======================================================================
+
+API key found - running real benchmarks
+
+
+======================================================================
+SHOPIFY API BENCHMARK
+======================================================================
+
+======================================================================
+STRATEGY BENCHMARK ANALYSIS
+Model: openai/gpt-4o-mini
+Queries: 5
+Runs per query: 2
+Strategies: baseline, toon_adapter, toon_strict, baml_adapter, json_baseline, zon_adapter, zon_strict, combined, zon_combined
+RAG Class: ShopifyAPIRAG
+======================================================================
+
+Testing strategy: baseline
+  Query: What products are available?
+    Avg: 9501 tokens, 22875.2ms
+  Query: Show me the prices of all products
+    Avg: 9287 tokens, 29986.2ms
+  Query: Which is the most expensive product?
+    Avg: 8720 tokens, 6022.3ms
+  Query: Are there any products under $50?
+    Avg: 8767 tokens, 7900.7ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 8789 tokens, 11029.0ms
+
+Testing strategy: toon_adapter
+  Query: What products are available?
+    Avg: 5628 tokens, 12704.7ms
+  Query: Show me the prices of all products
+    Avg: 5528 tokens, 11882.3ms
+  Query: Which is the most expensive product?
+    Avg: 5294 tokens, 6347.8ms
+  Query: Are there any products under $50?
+    Avg: 5325 tokens, 5709.5ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5403 tokens, 8903.0ms
+
+Testing strategy: toon_strict
+  Query: What products are available?
+    Avg: 5655 tokens, 26511.8ms
+  Query: Show me the prices of all products
+    Avg: 5778 tokens, 16394.7ms
+  Query: Which is the most expensive product?
+    Avg: 5273 tokens, 3731.8ms
+  Query: Are there any products under $50?
+    Avg: 5330 tokens, 8734.7ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5353 tokens, 8124.5ms
+
+Testing strategy: baml_adapter
+  Query: What products are available?
+    Avg: 6991 tokens, 27295.7ms
+  Query: Show me the prices of all products
+    Avg: 7136 tokens, 25210.1ms
+  Query: Which is the most expensive product?
+    Avg: 6238 tokens, 5752.2ms
+  Query: Are there any products under $50?
+    Avg: 6292 tokens, 4823.6ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6276 tokens, 5756.6ms
+
+Testing strategy: json_baseline
+  Query: What products are available?
+    Avg: 7244 tokens, 22512.1ms
+  Query: Show me the prices of all products
+    Avg: 6628 tokens, 7705.6ms
+  Query: Which is the most expensive product?
+    Avg: 6508 tokens, 5586.7ms
+  Query: Are there any products under $50?
+    Avg: 6569 tokens, 14335.0ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6529 tokens, 5904.3ms
+
+Testing strategy: zon_adapter
+  Query: What products are available?
+    Avg: 5936 tokens, 17278.1ms
+  Query: Show me the prices of all products
+    Avg: 5661 tokens, 8782.5ms
+  Query: Which is the most expensive product?
+    Avg: 5455 tokens, 4646.0ms
+  Query: Are there any products under $50?
+    Avg: 5528 tokens, 6026.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5572 tokens, 6420.5ms
+
+Testing strategy: zon_strict
+  Query: What products are available?
+    Avg: 6010 tokens, 31098.9ms
+  Query: Show me the prices of all products
+    Avg: 5669 tokens, 12244.0ms
+  Query: Which is the most expensive product?
+   3 tokens, 8104.6 Avg: 547ms
+  Query: Are there any products under $50?
+    Avg: 5574 tokens, 6925.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5539 tokens, 6147.6ms
+
+Testing strategy: combined
+  Query: What products are available?
+    Avg: 6292 tokens, 22207.9ms
+  Query: Show me the prices of all products
+    Avg: 5923 tokens, 9708.1ms
+  Query: Which is the most expensive product?
+    Avg: 5793 tokens, 5756.5ms
+  Query: Are there any products under $50?
+    Avg: 5835 tokens, 13122.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5849 tokens, 6477.0ms
+
+Testing strategy: zon_combined
+  Query: What products are available?
+    Avg: 6499 tokens, 14518.1ms
+  Query: Show me the prices of all products
+    Avg: 6171 tokens, 7711.0ms
+  Query: Which is the most expensive product?
+    Avg: 6012 tokens, 9186.8ms
+  Query: Are there any products under $50?
+    Avg: 6117 tokens, 13980.2ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6158 tokens, 6826.6ms
+
+======================================================================
+DATABASE BENCHMARK
+======================================================================
+Products in database: 17
+
+======================================================================
+STRATEGY BENCHMARK ANALYSIS
+Model: openai/gpt-4o-mini
+Queries: 5
+Runs per query: 2
+Strategies: baseline, toon_adapter, toon_strict, baml_adapter, json_baseline, zon_adapter, zon_strict, combined, zon_combined
+RAG Class: DatabaseRAG
+======================================================================
+
+Testing strategy: baseline
+  Query: What products are available?
+    Avg: 9220 tokens, 22916.7ms
+  Query: Show me the prices of all products
+    Avg: 9174 tokens, 15477.8ms
+  Query: Which is the most expensive product?
+    Avg: 8739 tokens, 6368.6ms
+  Query: Are there any products under $50?
+    Avg: 8753 tokens, 7800.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 8876 tokens, 8123.3ms
+
+Testing strategy: toon_adapter
+  Query: What products are available?
+    Avg: 5645 tokens, 12788.2ms
+  Query: Show me the prices of all products
+    Avg: 5828 tokens, 19772.5ms
+  Query: Which is the most expensive product?
+    Avg: 5287 tokens, 4467.8ms
+  Query: Are there any products under $50?
+    Avg: 5264 tokens, 3686.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5383 tokens, 7123.1ms
+
+Testing strategy: toon_strict
+  Query: What products are available?
+    Avg: 5603 tokens, 11717.0ms
+  Query: Show me the prices of all products
+    Avg: 5786 tokens, 16412.3ms
+  Query: Which is the most expensive product?
+    Avg: 5330 tokens, 6616.3ms
+  Query: Are there any products under $50?
+    Avg: 5274 tokens, 3969.7ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5392 tokens, 8586.4ms
+
+Testing strategy: baml_adapter
+  Query: What products are available?
+    Avg: 6861 tokens, 48300.3ms
+  Query: Show me the prices of all products
+    Avg: 7008 tokens, 19394.2ms
+  Query: Which is the most expensive product?
+    Avg: 6277 tokens, 5871.3ms
+  Query: Are there any products under $50?
+    Avg: 6258 tokens, 5242.8ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6297 tokens, 4859.7ms
+
+Testing strategy: json_baseline
+  Query: What products are available?
+    Avg: 7288 tokens, 20656.8ms
+  Query: Show me the prices of all products
+    Avg: 6634 tokens, 7266.2ms
+  Query: Which is the most expensive product?
+    Avg: 6573 tokens, 6615.2ms
+  Query: Are there any products under $50?
+    Avg: 6516 tokens, 5655.9ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6543 tokens, 8409.6ms
+
+Testing strategy: zon_adapter
+  Query: What products are available?
+    Avg: 5661 tokens, 322515.5ms
+  Query: Show me the prices of all products
+    Avg: 5637 tokens, 13638.1ms
+  Query: Which is the most expensive product?
+    Avg: 5478 tokens, 3281.6ms
+  Query: Are there any products under $50?
+    Avg: 5533 tokens, 6519.0ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5556 tokens, 8509.4ms
+
+Testing strategy: zon_strict
+  Query: What products are available?
+    Avg: 5617 tokens, 6286.4ms
+  Query: Show me the prices of all products
+    Avg: 5685 tokens, 18628.6ms
+  Query: Which is the most expensive product?
+    Avg: 5476 tokens, 5814.4ms
+  Query: Are there any products under $50?
+    Avg: 5559 tokens, 5880.7ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5585 tokens, 6435.4ms
+
+Testing strategy: combined
+  Query: What products are available?
+    Avg: 6533 tokens, 19599.8ms
+  Query: Show me the prices of all products
+    Avg: 6338 tokens, 16228.5ms
+  Query: Which is the most expensive product?
+    Avg: 5797 tokens, 7066.7ms
+  Query: Are there any products under $50?
+    Avg: 5886 tokens, 12907.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5864 tokens, 6610.9ms
+
+Testing strategy: zon_combined
+  Query: What products are available?
+    Avg: 6562 tokens, 15451.3ms
+  Query: Show me the prices of all products
+    Avg: 6206 tokens, 7258.2ms
+  Query: Which is the most expensive product?
+    Avg: 6002 tokens, 4609.7ms
+  Query: Are there any products under $50?
+    Avg: 6120 tokens, 11665.9ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6140 tokens, 11390.8ms
+
+======================================================================
+TOKEN USAGE COMPARISON
+======================================================================
+API products: 17
+DB products: 17
+
+======================================================================
+ADAPTER PERFORMANCE: API vs DATABASE
+======================================================================
+
+Query: What products are available?
+API products: 17
+DB products: 17
+
+Strategy             API Tokens      DB Tokens       Difference
+-----------------------------------------------------------------
+baseline             7777            7777            +0 (+0.0%)
+toon_adapter         4834            4836            +2 (+0.0%)
+toon_strict          4834            4836            +2 (+0.0%)
+baml_adapter         5520            5520            +0 (+0.0%)
+json_baseline        5520            5520            +0 (+0.0%)
+zon_adapter          5086            5086            +0 (+0.0%)
+zon_strict           5086            5086            +0 (+0.0%)
+combined             4834            4836            +2 (+0.0%)
+zon_combined         5086            5086            +0 (+0.0%)
+
+======================================================================
+KEY INSIGHT
+======================================================================
+
+With data parity achieved (17 products in both API and database),
+token counts are now IDENTICAL between sources. This validates that:
+1. Serialization adapters perform consistently regardless of data source
+2. The database correctly mirrors the API data
+3. Benchmark comparisons are now valid (same data, different sources)
+
+The ZON adapter shows consistent token reduction on both sources.
+
+======================================================================
+COMPARISON SUMMARY
+======================================================================
+
+Metric                         API             Database        Difference
+---------------------------------------------------------------------------
+Baseline Avg Tokens            9013            8952            -60 (-0.7%)
+Baseline Avg Latency (ms)      15562.7         12137.4         -3425.3 (-22.0%)
+
+Strategy Rankings (by token reduction):
+---------------------------------------------------------------------------
+toon_adapter         1          2          API
+toon_strict          2          1          DB
+zon_adapter          3          3          DB
+zon_strict           4          4          DB
+combined             5          5          DB
+zon_combined         6          6          DB
+baml_adapter         7          7          DB
+json_baseline        8          8          DB
+baseline             9          9          DB
+
+======================================================================
+INDIVIDUAL BENCHMARKS
+======================================================================
+Run these scripts for detailed results:
+  python api_main.py  - Full API benchmark
+  python db_main.py   - Full Database benchmark

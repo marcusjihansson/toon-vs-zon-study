@@ -1,0 +1,197 @@
+❯ uv run api_main.py
+
+======================================================================
+SHOPIFY API RAG - Strategy Benchmarking
+======================================================================
+
+API key found - running real benchmarks
+
+
+======================================================================
+TOKEN EFFICIENCY COMPARISON (Shopify API)
+======================================================================
+Query: What products are available?
+
+baseline: 7777 tokens (SimpleJSONAdapter)
+
+toon_adapter: 4836 tokens (ToonAdapter)
+
+toon_strict: 4836 tokens (ToonAdapter)
+
+baml_adapter: 5520 tokens (BAMLAdapter)
+
+json_baseline: 5520 tokens (SimpleJSONAdapter)
+
+zon_adapter: 5086 tokens (ZONAdapter)
+
+zon_strict: 5086 tokens (ZONAdapter)
+
+combined: 4836 tokens (CombinedAdapter)
+
+zon_combined: 5086 tokens (ZONCombinedAdapter)
+
+======================================================================
+TOKEN SAVINGS vs BASELINE
+======================================================================
+baseline: +0.0% (7777 tokens)
+toon_adapter: +37.8% (4836 tokens)
+toon_strict: +37.8% (4836 tokens)
+baml_adapter: +29.0% (5520 tokens)
+json_baseline: +29.0% (5520 tokens)
+zon_adapter: +34.6% (5086 tokens)
+zon_strict: +34.6% (5086 tokens)
+combined: +37.8% (4836 tokens)
+zon_combined: +34.6% (5086 tokens)
+
+======================================================================
+SHOPIFY API RAG BENCHMARK
+======================================================================
+Queries: 5
+Mode: REAL API CALLS
+
+======================================================================
+STRATEGY BENCHMARK ANALYSIS
+Model: openai/gpt-4o-mini
+Queries: 5
+Runs per query: 2
+Strategies: baseline, toon_adapter, toon_strict, baml_adapter, json_baseline, zon_adapter, zon_strict, combined, zon_combined
+RAG Class: ShopifyAPIRAG
+======================================================================
+
+Testing strategy: baseline
+  Query: What products are available?
+    Avg: 9484 tokens, 19040.7ms
+  Query: Show me the prices of all products
+    Avg: 9275 tokens, 13277.3ms
+  Query: Which is the most expensive product?
+    Avg: 8732 tokens, 4275.9ms
+  Query: Are there any products under $50?
+    Avg: 8851 tokens, 7129.5ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 8872 tokens, 6775.7ms
+
+Testing strategy: toon_adapter
+  Query: What products are available?
+    Avg: 5631 tokens, 8692.3ms
+  Query: Show me the prices of all products
+    Avg: 5749 tokens, 10964.3ms
+  Query: Which is the most expensive product?
+    Avg: 5338 tokens, 3637.8ms
+  Query: Are there any products under $50?
+    Avg: 5330 tokens, 3625.2ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5410 tokens, 13942.3ms
+
+Testing strategy: toon_strict
+  Query: What products are available?
+    Avg: 5699 tokens, 7913.6ms
+  Query: Show me the prices of all products
+    Avg: 5807 tokens, 12341.2ms
+  Query: Which is the most expensive product?
+    Avg: 5318 tokens, 3965.2ms
+  Query: Are there any products under $50?
+    Avg: 5309 tokens, 4860.7ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5426 tokens, 10549.1ms
+
+Testing strategy: baml_adapter
+  Query: What products are available?
+    Avg: 6883 tokens, 15453.8ms
+  Query: Show me the prices of all products
+    Avg: 7006 tokens, 18952.4ms
+  Query: Which is the most expensive product?
+    Avg: 6241 tokens, 5327.7ms
+  Query: Are there any products under $50?
+    Avg: 6283 tokens, 5238.8ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6286 tokens, 3826.0ms
+
+Testing strategy: json_baseline
+  Query: What products are available?
+    Avg: 7275 tokens, 21541.7ms
+  Query: Show me the prices of all products
+    Avg: 7050 tokens, 15929.0ms
+  Query: Which is the most expensive product?
+    Avg: 6480 tokens, 7379.6ms
+  Query: Are there any products under $50?
+    Avg: 6567 tokens, 6727.4ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6568 tokens, 5378.3ms
+
+Testing strategy: zon_adapter
+  Query: What products are available?
+    Avg: 5687 tokens, 6466.6ms
+  Query: Show me the prices of all products
+    Avg: 5670 tokens, 7831.9ms
+  Query: Which is the most expensive product?
+    Avg: 5482 tokens, 3345.7ms
+  Query: Are there any products under $50?
+    Avg: 5540 tokens, 3568.0ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5595 tokens, 4745.6ms
+
+Testing strategy: zon_strict
+  Query: What products are available?
+    Avg: 6053 tokens, 12114.8ms
+  Query: Show me the prices of all products
+    Avg: 5686 tokens, 6489.2ms
+  Query: Which is the most expensive product?
+    Avg: 5469 tokens, 2302.3ms
+  Query: Are there any products under $50?
+    Avg: 5541 tokens, 4413.2ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5530 tokens, 3701.4ms
+
+Testing strategy: combined
+  Query: What products are available?
+    Avg: 6432 tokens, 17530.2ms
+  Query: Show me the prices of all products
+    Avg: 5932 tokens, 6981.7ms
+  Query: Which is the most expensive product?
+    Avg: 5775 tokens, 4447.7ms
+  Query: Are there any products under $50?
+    Avg: 5885 tokens, 6295.6ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 5898 tokens, 5464.3ms
+
+Testing strategy: zon_combined
+  Query: What products are available?
+    Avg: 6388 tokens, 11911.2ms
+  Query: Show me the prices of all products
+    Avg: 6198 tokens, 6882.7ms
+  Query: Which is the most expensive product?
+    Avg: 6018 tokens, 3584.0ms
+  Query: Are there any products under $50?
+    Avg: 6049 tokens, 4136.9ms
+  Query: What product do you recommend I add to my storefro...
+    Avg: 6152 tokens, 5304.7ms
+
+======================================================================
+STRATEGY ANALYSIS REPORT
+======================================================================
+
+Benchmark Summary:
+   Total Queries: 5
+   Baseline Avg Tokens: 9043
+   Baseline Avg Latency: 10099.8ms
+
+Strategy Rankings (by token reduction):
+Rank  Strategy        Token Reduction Latency Impact  Success Rate
+----------------------------------------------------------------------
+1     toon_adapter    +39.3%         -19.1%        0.0%
+2     toon_strict     +39.0%         -21.5%        0.0%
+3     zon_adapter     +38.1%         -48.6%        0.0%
+4     zon_strict      +37.5%         -42.5%        0.0%
+5     combined        +33.8%         -19.4%        100.0%
+6     zon_combined    +31.9%         -37.0%        100.0%
+7     baml_adapter    +27.7%         -3.4%        100.0%
+8     json_baseline   +24.9%         +12.8%        100.0%
+9     baseline        +0.0%         +0.0%        100.0%
+
+Recommendations:
+   Max Token Reduction: toon_adapter
+   Minimal Latency Impact: zon_adapter
+   Highest Reliability: combined
+   Balanced Choice: baml_adapter
+
+======================================================================

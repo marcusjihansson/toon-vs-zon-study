@@ -1,0 +1,22 @@
+"""Entry point for the API vs DB comparison benchmark."""
+
+import argparse
+import os
+import sys
+
+
+def _ensure_repo_on_path() -> None:
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    if base_dir not in sys.path:
+        sys.path.insert(0, base_dir)
+
+
+def main() -> None:
+    _ensure_repo_on_path()
+    from cli.execution import comparative_main
+
+    comparative_main.main()
+
+
+if __name__ == "__main__":
+    main()
