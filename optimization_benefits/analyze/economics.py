@@ -9,7 +9,7 @@ input their own scale (daily inferences) and pricing models to estimate ROI.
 Usage:
     python analyze/economics.py [--daily_inferences N] [--input_token_price P]
 
-Defaults based on Shopify scale (40M/day) and GPT-4o-mini pricing.
+Defaults are parameterized (you provide your own request volume) and use GPT-4o-mini pricing unless overridden.
 """
 
 import argparse
@@ -28,10 +28,16 @@ MODELS = {
     "claude-3-haiku": CostModel("Claude 3 Haiku", 0.25, 1.25),
 }
 
-# Benchmark Findings (from paper.md)
-BASELINE_TOKENS = 7777
-COMBINED_TOKENS = 4836
-SAVINGS_PCT = 0.378
+# Benchmark Findings (from docs/)
+# Centralized in `analyze/study_constants.py` to prevent drift.
+try:
+    # Preferred when executed as a module: `python -m analyze.economics`
+    from .study_constants import PROMPT_STUDY
+except ImportError:  # pragma: no cover
+    # Fallback for direct execution: `python analyze/economics.py`
+    # NOTE: when executed this way, the `analyze/` directory is on sys.path and
+    # `analyze/analyze.py` shadows the `analyze` package name.
+    from study_constants import PROMPT_STUDY
 
 def calculate_savings(
     daily_inferences: int,
@@ -43,8 +49,8 @@ def calculate_savings(
     """
     
     # Calculate daily volumes
-    baseline_daily_tokens = daily_inferences * BASELINE_TOKENS
-    optimized_daily_tokens = daily_inferences * COMBINED_TOKENS
+    baseline_daily_tokens = daily_inferences * PROMPT_STUDY.baseline_tokens
+    optimized_daily_tokens = daily_inferences * PROMPT_STUDY.combined_tokens
     daily_token_saved = baseline_daily_tokens - optimized_daily_tokens
     
     # Calculate costs
@@ -61,7 +67,7 @@ def calculate_savings(
     print(f"Model Pricing Used:       ${input_price:.2f} / 1M input tokens ({model_name})")
     print(f"Scale (Daily Inferences): {daily_inferences:,}")
     print(f"Reduction Strategy:       Combined (TOON Input + JSON Fallback)")
-    print(f"Token Reduction:          {SAVINGS_PCT:.1%}")
+    print(f"Token Reduction:          {PROMPT_STUDY.combined_reduction_pct:.1%}")
     print(f"{'-'*70}")
     
     print(f"\nDaily Impact:")
@@ -76,11 +82,18 @@ def calculate_savings(
     print(f"\nInterpretation:")
     print(f"At {daily_inferences/1_000_000:.1f}M daily requests, switching to TOON/Combined serialization")
     print(f"saves approximately ${annual_savings/1_000_000:.1f} million per year in inference costs.")
-    print(f"This assumes the benchmarked average of {BASELINE_TOKENS} tokens per context.")
+    print(
+        f"This assumes the study prompt-only average of {PROMPT_STUDY.baseline_tokens} baseline tokens per request."
+    )
 
 def main():
     parser = argparse.ArgumentParser(description="Calculate token cost savings.")
-    parser.add_argument("--daily_inferences", type=int, default=40_000_000, help="Number of RAG inferences per day")
+    parser.add_argument(
+        "--daily_inferences",
+        type=int,
+        default=1_000_000,
+        help="Number of RAG inferences per day (provide your own volume)",
+    )
     parser.add_argument("--input_token_price", type=float, default=0.15, help="Price per 1M input tokens (USD)")
     parser.add_argument("--model", type=str, default="gpt-4o-mini", choices=MODELS.keys(), help="Preset model pricing")
     
