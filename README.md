@@ -14,7 +14,7 @@ The study compares JSON, TOON, and ZON serialization formats for Retrieval-Augme
 
 - **37.8% token reduction** using the "Combined Strategy" (TOON input + JSON fallback)
 - **100% reliability** maintained with JSON fallback parsing
-- Savings scale linearly with input-token pricing (e.g. **~$6.44M/year** at 40M daily inferences and **$0.15 per 1M input tokens**; see `optimization_benefits/analyze/economics.py`)
+- Savings scale linearly with input-token pricing (e.g. at **1M requests/day**, about **~$161k/year** at **$0.15 per 1M input tokens**; see `optimization_benefits/analyze/economics.py`)
 
 ## Projects
 
