@@ -16,7 +16,7 @@ Key findings demonstrate that combined strategies (format-specific encoding with
 
 ### 1.1. Problem: Token Economics in LLM Deployments
 
-LLM inference costs are directly proportional to input token consumption. For enterprises operating at scale (e.g., 40 million daily inferences), reducing input volume by 30-40% translates to millions in annual infrastructure savings. JSON, while universally compatible and human-readable, is inherently token-inefficient due to redundant keys, structural characters, and string quotes.
+LLM inference costs are directly proportional to input token consumption. For enterprises operating at scale, reducing input volume by 30–40% can translate to large annual infrastructure savings; the relationship is linear in request volume and input-token price. JSON, while universally compatible and human-readable, is inherently token-inefficient due to redundant keys, structural characters, and string quotes.
 E-commerce platforms like Shopify process massive product catalogs with complex nested structures (variants, options, metadata). When feeding this data to LLMs for tasks like product recommendations, semantic search, or content generation, JSON overhead significantly impacts both inference costs and system scalability.
 
 ### 1.2. Motivation
@@ -224,16 +224,16 @@ To validate experimental methodology, we benchmark across two data sources:
 
 ### 5.3 Economic Implications
 
-Using Shopify's scale (40M daily inferences) as a reference case:
+Using an example scale of **1M daily inferences** as a reference case:
 Assuming pricing of **$0.15 per 1M input tokens** (GPT-4o-mini) and using the measured prompt sizes from Section 4.1:
 
 | Strategy | Prompt Tokens / Request | Daily Input Cost | Annual Input Cost | Savings vs Baseline |
 |----------|--------------------------|------------------|-------------------|---------------------|
-| baseline | 7,777 | $46,662 | $17,031,630 | 0% |
-| combined | 4,836 | $29,016 | $10,590,840 | -37.8% (**$6,440,790/year**) |
-| zon_combined | 5,086 | $30,516 | $11,138,340 | -34.6% ($5,893,290/year) |
+| baseline | 7,777 | $1,166.55 | $425,790.75 | 0% |
+| combined | 4,836 | $725.40 | $264,771.00 | -37.8% (**$161,019.75/year**) |
+| zon_combined | 5,086 | $762.90 | $278,458.50 | -34.6% ($147,332.25/year) |
 
-These savings scale linearly with your input-token price. For example, at **$0.86 per 1M input tokens**, the `combined` strategy would save **~$36.9M/year** at 40M requests/day.
+These savings scale linearly with your input-token price and request volume. For example, at **$0.86 per 1M input tokens**, the `combined` strategy would save **~$923k/year** at 1M requests/day.
 
 ### 5.4 Limitations
 

@@ -10,7 +10,7 @@ We benchmarked token-efficient serialization formats (TOON and ZON) against stan
 - **Winner**: "Combined Strategy" (TOON input + JSON fallback parsing).
 - **Impact**: **37.8% reduction** in input tokens.
 - **Reliability**: **100% success rate** (resolving the reliability issues of strict compact formats).
-- **ROI**: At 40M daily inferences, savings scale linearly with input-token pricing (e.g. **~$6.44M/year** at **$0.15 per 1M input tokens**; see `analyze/economics.py`).
+- **ROI**: Savings scale linearly with request volume and input-token pricing (e.g. at **1M requests/day**, about **$161k/year** at **$0.15 per 1M input tokens**; see `analyze/economics.py`).
 
 ## 📂 Repository Structure
 

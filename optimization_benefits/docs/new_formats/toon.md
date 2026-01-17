@@ -167,7 +167,7 @@ products[50]{title,vendor,variants}:
    LLM generation speed (Time to First Token and Total Processing Time) is inversely proportional to input size. By compressing the input, Shopify's AI agents can reason over larger catalogs faster.
 
 3. **Cost Savings at Scale:**
-   At 40 million daily inferences (a figure aligned with Shopify's scale), a 40% reduction in input token volume translates to massive infrastructure savings, whether using external APIs (OpenAI/Anthropic) or self-hosted models (Llama/Mistral on Triton Inference Server).
+   At large scales, a ~40% reduction in input token volume can translate to substantial infrastructure savings (linear in request volume and input-token price), whether using external APIs (OpenAI/Anthropic) or self-hosted models (Llama/Mistral on Triton Inference Server).
 
 4. **Enhanced Context Window:**
    TOON allows the model to "see" more products in a single pass. Instead of fitting only 20 products into a context window for a recommendation task, TOON allows fitting 35-40 products, improving the quality of the AI's reasoning.

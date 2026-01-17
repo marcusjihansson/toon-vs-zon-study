@@ -99,12 +99,12 @@ See [demo/README.md](../demo/README.md) for more details on demo scripts.
 To project cost savings for your specific scale based on our experimental findings:
 
 ```bash
-python analyze/economics.py --daily_inferences 40000000 --input_token_price 0.15
+python analyze/economics.py --daily_inferences 1000000 --input_token_price 0.15
 ```
 
 Arguments:
 
-- `--daily_inferences`: Number of RAG calls per day (default: 40M).
+- `--daily_inferences`: Number of RAG calls per day (default: 1M; provide your own volume).
 - `--input_token_price`: Cost per 1M input tokens (default: $0.15 for GPT-4o-mini).
 - `--model`: Optional preset pricing model (see `--help`).
 

@@ -49,15 +49,15 @@ annual_savings_usd = (baseline_tokens - optimized_tokens)
                      * 365
 ```
 
-Using the measured prompt sizes (7,777 → 4,836) and Shopify-scale volume (40M/day):
+Using the measured prompt sizes (7,777 → 4,836) and an example volume of **1M requests/day**:
 
 - Tokens saved / request: **2,941**
-- Tokens saved / year: **~42.95T**
-- At **$0.15 / 1M input tokens**: **~$6.44M/year**
+- Tokens saved / year: **~1.07T**
+- At **$0.15 / 1M input tokens**: **~$161k/year**
 
 For a turnkey calculator, run:
 
 ```bash
 python analyze/economics.py --help
-python analyze/economics.py --daily_inferences 40000000 --input_token_price 0.15
+python analyze/economics.py --daily_inferences 1000000 --input_token_price 0.15
 ```
